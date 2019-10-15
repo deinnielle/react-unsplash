@@ -1,0 +1,132 @@
+$backgroundColor: white;
+$textColor: black;
+
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed, 
+figure, figcaption, footer, header, hgroup, 
+menu, nav, output, section, summary,
+time, mark, audio, video {
+    margin: 0;
+    padding: 0;
+    border: 0;
+    font-size: 100%;
+    font: inherit;
+    vertical-align: baseline;
+}
+
+article, aside, details, figcaption, figure, 
+footer, header, hgroup, menu, nav, section {
+    display: block;
+}
+
+ol, ul {
+    list-style: none;
+}
+
+blockquote, q {
+    quotes: none;
+}
+
+blockquote:before, blockquote:after,
+q:before, q:after {
+    content: '';
+    content: none;
+}
+
+table {
+    border-collapse: collapse;
+    border-spacing: 0;
+}
+
+* {
+    box-sizing: border-box;
+}
+
+body {
+    background: $backgroundColor;
+    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+    color: $textColor;
+}
+
+input {
+	width: 235px;
+	background-color: transparent;
+	border: 1px solid #000;
+	font-size: 18px;
+	outline: none;
+	appearance: none;
+	border-radius: 0px;
+	margin-left: 0px;
+	padding: 5px;
+	color: #000;
+	text-transform: uppercase;
+	background-clip: padding-box;
+}
+
+button {
+	background-color: transparent;
+	border: 1px solid #000;
+	font-size: 18px;
+	outline: none;
+	appearance: none;
+	border-radius: 0px;
+	margin-left: -1px;
+	padding: 5px;
+	color: #000;
+}
+
+button:hover {
+    background: #000;
+    color: white;
+}
+
+a {
+    text-decoration: none;
+    color: $textColor;
+}
+
+a:hover {
+    text-decoration: underline;
+}
+
+nav {
+    a {
+        margin-right: 5px;
+        text-decoration: none;
+        color: $textColor;
+    }
+    
+    a:hover {
+        text-decoration: underline;
+    }
+}
+
+section {
+    font-size: 0px;
+}
+
+.grid-item {
+    font-size: 20px;
+    width: 50%;
+    display: inline-block;
+    vertical-align:top;
+    box-sizing: border-box;
+    white-space: nowrap;
+    
+    img {
+        width: 100%;
+    }
+}
+
+@media only screen and (max-width:1200px) { 
+    .grid-item {
+        width: 100%;
+    }
+}

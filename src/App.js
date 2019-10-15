@@ -17,7 +17,7 @@ class App extends Component {
 	}
 
 	handleSubmit(event) {
-    fetch('https://api.unsplash.com/search/photos/?client_id=30086014b47d3da23e1a9b2fa85837f0ca041c5ce34d4bfab637c45988c5ce08&page=1&per_page=5&orientation=portrait&query=' + this.state.value)
+    fetch('https://api.unsplash.com/search/photos/?client_id=30086014b47d3da23e1a9b2fa85837f0ca041c5ce34d4bfab637c45988c5ce08&page=1&per_page=10&orientation=portrait&query=' + this.state.value)
     .then(res => res.json())
     .then(
       (result) => {
@@ -34,19 +34,20 @@ class App extends Component {
         });
       }
     )
-		console.log('A name was submitted: ' + this.state.value);
 		event.preventDefault();
 	}
 
 	render() {
 		return (
-      <div>
-			<form onSubmit={this.handleSubmit}>
-				<input type="text" value={this.state.value} onChange={this.handleChange} />
-				<input type="submit" value="Submit" />
-			</form>
-      <div>{this.state.images.map(image => (<img src={image.urls.small} key={image.id} alt="" />))}</div>
-      </div>
+      <section>
+      <nav>
+        <form onSubmit={this.handleSubmit}>
+          <input type="text" value={this.state.value} onChange={this.handleChange} />
+          <button>SEARCH</button>
+        </form>
+      </nav>
+      {this.state.images.map(image => (<img class="grid-item" src={image.urls.regular} key={image.id} alt="" />))}
+      </section>
 		);
 	}
 }
