@@ -1,59 +1,46 @@
-import React, { Component } from 'react';
+import React, { useState } from 'react';
 
-class App extends Component {
-	constructor() {
-		super();
-    this.state = {
-      value: '',
-      images: [],
-    };
-	
-		this.handleChange = this.handleChange.bind(this);
-		this.handleSubmit = this.handleSubmit.bind(this);
-	}
-	
-	handleChange(event) {
-		this.setState({value: event.target.value});
-	}
+const App = () => {
+  const [value, setValue] = useState('');
+  const [images, setImages] = useState([]);
+  const [total, setTotal] = useState(null);
 
-	handleSubmit(event) {
-    fetch(`https://api.unsplash.com/search/photos/?client_id=${process.env.REACT_APP_CLIENTID}&page=1&per_page=10&orientation=portrait&query=` + this.state.value)
-    .then(res => res.json())
-    .then(
-      (result) => {
-        this.setState({
-            images: result.results,
-            total: result.total,
-            value: this.state.value
-        });
-      },
-      (error) => {
-        this.setState({
-          isLoaded: true,
-          error
-        });
-      }
+  const handleChange = event => {
+    setValue(event.target.value);
+  };
+
+  const handleSubmit = event => {
+    fetch(
+      `https://api.unsplash.com/search/photos/?client_id=${process.env.REACT_APP_CLIENTID}&page=1&per_page=10&orientation=portrait&query=` +
+        value
     )
-		event.preventDefault();
-	}
+      .then(res => res.json())
+      .then(result => {
+        setImages(result.results);
+        setTotal(result.total);
+      });
+    event.preventDefault();
+  };
 
-	render() {
-		return (
-      <section>
-        <nav>
-          <form onSubmit={this.handleSubmit}>
-            <input type="text" value={this.state.value} onChange={this.handleChange} />
-            <button>SEND</button>
-          </form>
-        </nav>
-        {this.state.images.map(image => (
-          <div class="grid-item">
-            <img src={image.urls.regular} key={image.id} alt={image.description} />
-            <div class="text">{image.alt_description}</div>
-          </div>
-        ))}
-      </section>
-		);
-	}
-}
+  return (
+    <section>
+      <nav>
+        <form onSubmit={handleSubmit}>
+          <input type="text" value={value} onChange={handleChange} />
+          <button>SEND</button>
+        </form>
+      </nav>
+      {images.map(image => (
+        <div class="grid-item">
+          <img
+            src={image.urls.regular}
+            key={image.id}
+            alt={image.description}
+          />
+          <div class="text">{image.alt_description}</div>
+        </div>
+      ))}
+    </section>
+  );
+};
 export default App;
