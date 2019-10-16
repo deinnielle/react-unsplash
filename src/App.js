@@ -17,6 +17,7 @@ class App extends Component {
 	}
 
 	handleSubmit(event) {
+    console.log(process.env.REACT_APP_CLIENTID);
     fetch(`https://api.unsplash.com/search/photos/?client_id=${process.env.REACT_APP_CLIENTID}&page=1&per_page=10&orientation=portrait&query=` + this.state.value)
     .then(res => res.json())
     .then(
