@@ -40,13 +40,18 @@ class App extends Component {
 	render() {
 		return (
       <section>
-      <nav>
-        <form onSubmit={this.handleSubmit}>
-          <input type="text" value={this.state.value} onChange={this.handleChange} />
-          <button>SEARCH</button>
-        </form>
-      </nav>
-      {this.state.images.map(image => (<img class="grid-item" src={image.urls.regular} key={image.id} alt="" />))}
+        <nav>
+          <form onSubmit={this.handleSubmit}>
+            <input type="text" value={this.state.value} onChange={this.handleChange} />
+            <button>SEND</button>
+          </form>
+        </nav>
+        {this.state.images.map(image => (
+          <div class="grid-item">
+            <img src={image.urls.regular} key={image.id} alt={image.description} />
+            <div class="text">{image.alt_description}</div>
+          </div>
+        ))}
       </section>
 		);
 	}
