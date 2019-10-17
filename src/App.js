@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
-
+import Searchbar from './components/searchbar';
 class App extends Component {
-	constructor() {
+  constructor() {
 		super();
     this.state = {
       value: '',
@@ -13,19 +13,19 @@ class App extends Component {
 	}
 	
 	handleChange(event) {
-		this.setState({value: event.target.value});
+    this.setState({value: event.target.value});
 	}
-
+  
 	handleSubmit(event) {
     fetch(`https://api.unsplash.com/search/photos/?client_id=${process.env.REACT_APP_CLIENTID}&page=1&per_page=10&orientation=portrait&query=` + this.state.value)
     .then(res => res.json())
     .then(
       (result) => {
         this.setState({
-            images: result.results,
+          images: result.results,
             total: result.total,
             value: this.state.value
-        });
+          });
       },
       (error) => {
         this.setState({
@@ -33,18 +33,15 @@ class App extends Component {
           error
         });
       }
-    )
-		event.preventDefault();
-	}
+      )
+      event.preventDefault();
+    }
 
 	render() {
 		return (
       <section>
         <nav>
-          <form onSubmit={this.handleSubmit}>
-            <input type="text" value={this.state.value} onChange={this.handleChange} />
-            <button>SEND</button>
-          </form>
+          <Searchbar />
         </nav>
         {this.state.images.map(image => (
           <div class="grid-item">
