@@ -25,9 +25,9 @@ const App = () => {
         </form>
       </nav>
       {images.map(image => (
-        <div class="grid-item">
-          <img src={image.urls.regular} key={image.id} alt={image.description} />
-          <div class="text">{
+        <div className="grid-item" key={image.id}>
+          <img src={image.urls.regular} alt={image.description} />
+          <div className="text">{
             `${image.alt_description.substring(0,20)}`
           }</div>
         </div>
