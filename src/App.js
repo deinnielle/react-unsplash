@@ -9,7 +9,7 @@ const App = () => {
 	}
 
 	const handleSubmit = event => {
-    fetch(`https://api.unsplash.com/search/photos/?client_id=${process.env.REACT_APP_CLIENTID}&page=1&per_page=10&orientation=portrait&query=` + value)
+    fetch(`https://api.unsplash.com/search/photos/?client_id=${process.env.REACT_APP_CLIENTID}&page=1&per_page=10&query=${value}`)
     .then(res => res.json())
     .then((result) => {
         setImages(result.results);
@@ -27,9 +27,7 @@ const App = () => {
       {images.map(image => (
         <div className="grid-item" key={image.id}>
           <img src={image.urls.regular} alt={image.description} />
-          <div className="text">{
-            `${image.alt_description.substring(0,20)}`
-          }</div>
+          <div className="text">{image.description}</div>
         </div>
       ))}
     </section>
