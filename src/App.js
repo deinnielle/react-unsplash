@@ -21,7 +21,10 @@ const App = () => {
   return (
     <section>
       <nav>
-          <Searchbar onSubmit={handleSubmit} value={value} handleChange={handleChange} />   
+        <form onSubmit={handleSubmit}>
+          <Searchbar value={value} handleChange={handleChange} />
+          <button>SEND</button>
+        </form>
       </nav>
       {images.map(image => (
         <div className="grid-item" key={image.id}>
