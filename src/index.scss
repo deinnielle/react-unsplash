@@ -68,7 +68,7 @@ input {
 	padding: 5px;
 	color: #000;
 	text-transform: uppercase;
-	background-clip: padding-box;
+    background-clip: padding-box;
 }
 
 button {
@@ -80,7 +80,8 @@ button {
 	border-radius: 0px;
 	margin-left: -1px;
 	padding: 5px;
-	color: #000;
+    color: #000;
+    transition: 0.5s;
 }
 
 button:hover {

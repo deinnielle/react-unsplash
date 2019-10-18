@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import Searchbar from './components/searchbar';
 
 const App = () => {
   const [value, setValue] = useState('');
@@ -21,7 +22,7 @@ const App = () => {
     <section>
       <nav>
         <form onSubmit={handleSubmit}>
-          <input type="text" value={value} onChange={handleChange} />
+          <Searchbar value={value} handleChange={handleChange} />
           <button>SEND</button>
         </form>
       </nav>
