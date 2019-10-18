@@ -1,29 +1,17 @@
 import React, { Component } from 'react';
 
-class Searchbar extends Component {
-    constructor() {
-	super();
-    this.state = {
-      value: '',
-    };
-	
-		this.handleChange = this.handleChange.bind(this);
-	}
-	
-	handleChange(event) {
-    this.setState({value: event.target.value});
-	}
-  
+class Searchbar extends React.Component {
     render() {
-        return ( 
-        <form onSubmit={this.handleSubmit}>
-            <input 
+        return (
+            <form onSubmit={handleSubmit}>
+                <input 
                 type="text" 
-                value={this.state.value}
-                onChange={this.handleChange}
-             />
-            <button>SEND</button>
-        </form>);
+                value={this.props.value}
+                onChange={this.props.handleChange}
+                />
+                <button>SEND</button>
+            </form>
+        )
     } 
 }
 

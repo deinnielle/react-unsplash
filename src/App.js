@@ -1,60 +1,5 @@
-<<<<<<< HEAD
-import React, { Component } from 'react';
-import Searchbar from './components/searchbar';
-class App extends Component {
-  constructor() {
-		super();
-    this.state = {
-      value: '',
-      images: [],
-    };
-	
-		this.handleChange = this.handleChange.bind(this);
-		this.handleSubmit = this.handleSubmit.bind(this);
-	}
-	
-	handleChange(event) {
-    this.setState({value: event.target.value});
-	}
-  
-	handleSubmit(event) {
-    fetch(`https://api.unsplash.com/search/photos/?client_id=${process.env.REACT_APP_CLIENTID}&page=1&per_page=10&orientation=portrait&query=` + this.state.value)
-    .then(res => res.json())
-    .then(
-      (result) => {
-        this.setState({
-          images: result.results,
-            total: result.total,
-            value: this.state.value
-          });
-      },
-      (error) => {
-        this.setState({
-          isLoaded: true,
-          error
-        });
-      }
-      )
-      event.preventDefault();
-    }
-
-	render() {
-		return (
-      <section>
-        <nav>
-          <Searchbar />
-        </nav>
-        {this.state.images.map(image => (
-          <div class="grid-item">
-            <img src={image.urls.regular} key={image.id} alt={image.description} />
-            <div class="text">{image.alt_description}</div>
-          </div>
-        ))}
-      </section>
-		);
-	}
-=======
 import React, { useState } from 'react';
+import Searchbar from './components/searchbar';
 
 const App = () => {
   const [value, setValue] = useState('');
@@ -76,10 +21,8 @@ const App = () => {
   return (
     <section>
       <nav>
-        <form onSubmit={handleSubmit}>
-          <input type="text" value={value} onChange={handleChange} />
-          <button>SEND</button>
-        </form>
+          <Searchbar onSubmit={handleSubmit} value={value} handleChange={handleChange} />
+          
       </nav>
       {images.map(image => (
         <div className="grid-item" key={image.id}>
@@ -89,7 +32,6 @@ const App = () => {
       ))}
     </section>
   )
->>>>>>> upstream/master
 }
 
 export default App;
