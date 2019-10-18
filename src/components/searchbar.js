@@ -3,7 +3,7 @@ import React, { Component } from 'react';
 class Searchbar extends React.Component {
     render() {
         return (
-            <form onSubmit={handleSubmit}>
+            <form onSubmit={this.props.handleSubmit}>
                 <input 
                 type="text" 
                 value={this.props.value}
