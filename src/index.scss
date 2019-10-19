@@ -128,6 +128,12 @@ section {
 
 @media only screen and (max-width:1200px) { 
     .grid-item {
+        width: 50%;
+    }
+}
+
+@media only screen and (max-width:500px) { 
+    .grid-item {
         width: 100%;
     }
 }
