@@ -49,8 +49,8 @@ const SearchBar = () => {
         <button>SEND</button>
       </form>
       <div>
-            <button onClick={nextPage}>Load More</button>
-            <button onClick={prevPage}>Previous Page</button>
+          <button onClick={prevPage}>-1 Page</button>
+          <button onClick={nextPage}>Load More</button>
       </div>
       {images.map(image => (
         <div className="grid-item" key={image.id}>
