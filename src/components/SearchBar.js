@@ -46,7 +46,7 @@ const SearchBar = () => {
     <nav>
       <form onSubmit={handleSubmit}>
         <input type="text" value={value} onChange={handleChange} />
-        <button>SENDs</button>
+        <button>SEND</button>
       </form>
       <div>
             <button onClick={nextPage}>Load More</button>
