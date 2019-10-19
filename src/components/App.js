@@ -1,9 +1,9 @@
 import React, { useState } from 'react';
-import SearchBar from './SearchBar';
+import Search from './Search';
 
 const App = () => {
   return (
-    <SearchBar />
+    <Search />
   )
 }
 
