@@ -3,15 +3,15 @@ import React, { useState, useEffect } from 'react';
 const SearchBar = () => {
 	const [value, setValue] = useState('random');
   const [images, setImages] = useState([]);
-  const [count, setCount] = useState(2)
-
+  const [count, setCount] = useState(1)
+  
   useEffect(() => {
-    fetch(`https://api.unsplash.com/search/photos/?client_id=${process.env.REACT_APP_CLIENTID}&page=1&per_page=10&query=${value}`)
+    console.log(count);
+    fetch(`https://api.unsplash.com/search/photos/?client_id=${process.env.REACT_APP_CLIENTID}&page=${count}&per_page=10&query=${value}`)
     .then(res => res.json())
     .then((result) => {
       setImages(result.results);
     })
-    setCount(2)
   },[value])
 
   const nextPage = event => {
