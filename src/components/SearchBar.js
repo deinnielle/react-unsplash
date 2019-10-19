@@ -17,8 +17,9 @@ const SearchBar = () => {
     event.preventDefault();
   }
   
-  const{prevPage} = event => {
+  const prevPage = event => {
     setCount(prevCount => prevCount -1)
+    console.log(count);
     fetch(`https://api.unsplash.com/search/photos/?client_id=${process.env.REACT_APP_CLIENTID}&page=${count}&per_page=10&query=${value}`)
     .then(res => res.json())
     .then((result) => {
