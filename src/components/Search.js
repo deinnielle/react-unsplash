@@ -3,7 +3,7 @@ import React, { useState, useEffect } from 'react';
 const SearchBar = () => {
 	const [value, setValue] = useState('random');
   const [images, setImages] = useState([]);
-  const [count, setCount] = useState(0);
+  const [count, setCount] = useState(1);
   
   useEffect(() => {
     fetch(`https://api.unsplash.com/search/photos/?client_id=${process.env.REACT_APP_CLIENTID}&page=${count}&per_page=10&query=${value}`)
@@ -11,11 +11,9 @@ const SearchBar = () => {
     .then((result) => {
       setImages(result.results);
     })
-
-  },[value])
+  },[count, value])
 
   const nextPage = event => {
- 
     setCount(count + 1);
     
     console.log('next ' + count)
@@ -29,8 +27,11 @@ const SearchBar = () => {
   }
   
   const prevPage = event => {
-
-    setCount(count - 1);
+    if (count <= 1) {
+      setCount(1);
+    } else {
+      setCount(count - 1);
+    }
     console.log('prev ' + count)
 
     fetch(`https://api.unsplash.com/search/photos/?client_id=${process.env.REACT_APP_CLIENTID}&page=${count}&per_page=10&query=${value}`)
@@ -48,14 +49,8 @@ const SearchBar = () => {
 	return (
     <div>
       {console.log('return ' + count)}
-      
-      <div>
-        <button onClick={prevPage}>PREV</button>
-        <button onClick={nextPage}>MORE</button>
-      </div>
       <form>
         <input type="text" value={value} onChange={handleChange} />
-        <button>SEND</button>
       </form>
       {images.map(image => (
         <div className="grid-item" key={image.id}>
@@ -63,6 +58,10 @@ const SearchBar = () => {
           <div className="text">{image.description}</div>
         </div>
       ))}
+      <div>
+        <button onClick={prevPage}>PREV</button>
+        <button onClick={nextPage}>MORE</button>
+      </div>
     </div>
 	)
 }
