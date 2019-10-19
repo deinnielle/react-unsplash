@@ -41,24 +41,6 @@ const SearchBar = () => {
     event.preventDefault();
   }
 
-  const nextPage = event => {
-    fetch(`https://api.unsplash.com/search/photos/?client_id=${process.env.REACT_APP_CLIENTID}&page=1&per_page=10&query=${value}`)
-    .then(res => res.json())
-    .then((result) => {
-      setImages(result.results);
-    })
-    event.preventDefault();
-  }
-
-  const prevPage = event => {
-    fetch(`https://api.unsplash.com/search/photos/?client_id=${process.env.REACT_APP_CLIENTID}&page=1&per_page=10&query=${value}`)
-    .then(res => res.json())
-    .then((result) => {
-      setImages(result.results);
-    })
-    event.preventDefault();
-  }
-
 	return (
     <nav>
       <form onSubmit={handleSubmit}>
