@@ -18,7 +18,7 @@ const SearchBar = () => {
  
     setCount(count + 1);
     
-    console.log(count);
+    console.log('next ' + count)
     
     fetch(`https://api.unsplash.com/search/photos/?client_id=${process.env.REACT_APP_CLIENTID}&page=${count}&per_page=10&query=${value}`)
     .then(res => res.json())
@@ -31,7 +31,7 @@ const SearchBar = () => {
   const prevPage = event => {
 
     setCount(count - 1);
-    console.log(count);
+    console.log('prev ' + count)
 
     fetch(`https://api.unsplash.com/search/photos/?client_id=${process.env.REACT_APP_CLIENTID}&page=${count}&per_page=10&query=${value}`)
     .then(res => res.json())
@@ -47,7 +47,8 @@ const SearchBar = () => {
 
 	return (
     <div>
-      <h1>{count}</h1>
+      {console.log('return ' + count)}
+      
       <div>
         <button onClick={prevPage}>PREV</button>
         <button onClick={nextPage}>MORE</button>
