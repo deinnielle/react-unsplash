@@ -55,8 +55,8 @@ const SearchBar = () => {
         </div>
       ))}
       <div>
-        <button onClick={prevPage}>-1 Page</button>
-        <button onClick={nextPage}>Load More</button>
+        <button onClick={prevPage}>PREV</button>
+        <button onClick={nextPage}>MORE</button>
       </div>
     </div>
 	)
