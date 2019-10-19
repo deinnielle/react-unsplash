@@ -1,9 +1,18 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 
 const SearchBar = () => {
-	const [value, setValue] = useState('');
+	const [value, setValue] = useState('random');
   const [images, setImages] = useState([]);
   const [count, setCount] = useState(2)
+
+  useEffect(() => {
+    fetch(`https://api.unsplash.com/search/photos/?client_id=${process.env.REACT_APP_CLIENTID}&page=1&per_page=10&query=${value}`)
+    .then(res => res.json())
+    .then((result) => {
+      setImages(result.results);
+    })
+    setCount(2)
+  },[value])
 
   const nextPage = event => {
     setCount(prevCount => prevCount + 1)
@@ -20,13 +29,13 @@ const SearchBar = () => {
   const prevPage = event => {
     setCount(prevCount => prevCount -1)
     console.log(count);
+
     fetch(`https://api.unsplash.com/search/photos/?client_id=${process.env.REACT_APP_CLIENTID}&page=${count}&per_page=10&query=${value}`)
     .then(res => res.json())
     .then((result) => {
       setImages(result.results);
     })
     event.preventDefault();
-
   }
 
   const handleChange = event => {
