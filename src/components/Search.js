@@ -43,22 +43,22 @@ const SearchBar = () => {
   }
 
 	return (
-    <nav>
+    <div>
       <form onSubmit={handleSubmit}>
         <input type="text" value={value} onChange={handleChange} />
         <button>SEND</button>
       </form>
-      <div>
-          <button onClick={prevPage}>-1 Page</button>
-          <button onClick={nextPage}>Load More</button>
-      </div>
       {images.map(image => (
         <div className="grid-item" key={image.id}>
           <img src={image.urls.regular} alt={image.description} />
           <div className="text">{image.description}</div>
         </div>
       ))}
-    </nav>
+      <div>
+        <button onClick={prevPage}>-1 Page</button>
+        <button onClick={nextPage}>Load More</button>
+      </div>
+    </div>
 	)
 }
 export default SearchBar;
