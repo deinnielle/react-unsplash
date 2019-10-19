@@ -5,7 +5,7 @@ const SearchBar = () => {
   const [images, setImages] = useState([]);
   const [count, setCount] = useState(2)
 
-  const increment = event => {
+  const nextPage = event => {
     setCount(prevCount => prevCount + 1)
     console.log(count);
     
@@ -17,7 +17,7 @@ const SearchBar = () => {
     event.preventDefault();
   }
   
-  const decrement = event => {
+  const{prevPage} = event => {
     setCount(prevCount => prevCount -1)
     fetch(`https://api.unsplash.com/search/photos/?client_id=${process.env.REACT_APP_CLIENTID}&page=${count}&per_page=10&query=${value}`)
     .then(res => res.json())
@@ -48,10 +48,9 @@ const SearchBar = () => {
         <button>SENDs</button>
       </form>
       <div>
-            <button onClick={increment}>Load More</button>
-            <button onClick={decrement}>Previous Page</button>
-            {/* <button onClick={decrement}>Decrement</button> */}
-        </div>
+            <button onClick={nextPage}>Load More</button>
+            <button onClick={prevPage}>Previous Page</button>
+      </div>
       {images.map(image => (
         <div className="grid-item" key={image.id}>
           <img src={image.urls.regular} alt={image.description} />
