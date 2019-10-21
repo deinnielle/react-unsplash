@@ -6,12 +6,8 @@ const SearchBar = () => {
   const [count, setCount] = useState(1);
   
   useEffect(() => {
-    fetch(`https://api.unsplash.com/search/photos/?client_id=${process.env.REACT_APP_CLIENTID}&page=${count}&per_page=10&query=random`)
-    .then(res => res.json())
-    .then((result) => {
-      setImages(result.results);
-    })
-  },[count]);
+    getData();
+  },[value, count]);
   
   const getData = () => {
     fetch(`https://api.unsplash.com/search/photos/?client_id=${process.env.REACT_APP_CLIENTID}&page=${count}&per_page=10&query=${value}`)
@@ -19,22 +15,23 @@ const SearchBar = () => {
     .then((result) => {
       setImages(result.results);
     })
+    console.log('getdata ' + value)
   }
 
   const nextPage = event => {
-    getData();
     setCount(count + 1);
+    getData();
     console.log('next ' + count + ' ' + value)
     event.preventDefault();
   }
   
   const prevPage = event => {
-    getData();
     if (count <= 1) {
       setCount(1);
     } else {
       setCount(count - 1);
     }
+    getData();
     console.log('prev ' + count + ' ' + value)
     event.preventDefault();
   }
@@ -53,9 +50,7 @@ const SearchBar = () => {
 
 	return (
     <div>
-      {
-        console.log('return ' + count + ' ' + value)
-      }
+      {console.log('return ' + count + ' ' + value)}
       <form onSubmit={handleSubmit}>
         <input type="text" value={value} onChange={handleChange} />
       </form>
