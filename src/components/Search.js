@@ -1,28 +1,31 @@
 import React, { useState, useEffect } from 'react';
 
 const SearchBar = () => {
+  const startValue = 'random';
 	const [value, setValue] = useState('random');
   const [images, setImages] = useState([]);
   const [count, setCount] = useState(1);
   
   useEffect(() => {
+    fetch(`https://api.unsplash.com/search/photos/?client_id=${process.env.REACT_APP_CLIENTID}&page=${count}&per_page=10&query=${startValue}`)
+    .then(res => res.json())
+    .then((result) => {
+      setImages(result.results);
+    })
+  },[count, startValue]);
+  
+  const getData = () => {
     fetch(`https://api.unsplash.com/search/photos/?client_id=${process.env.REACT_APP_CLIENTID}&page=${count}&per_page=10&query=${value}`)
     .then(res => res.json())
     .then((result) => {
       setImages(result.results);
     })
-  },[count, value])
+  }
 
   const nextPage = event => {
     setCount(count + 1);
-    
-    console.log('next ' + count)
-    
-    fetch(`https://api.unsplash.com/search/photos/?client_id=${process.env.REACT_APP_CLIENTID}&page=${count}&per_page=10&query=${value}`)
-    .then(res => res.json())
-    .then((result) => {
-      setImages(result.results);
-    })
+    console.log('prev ' + count)
+    getData();
     event.preventDefault();
   }
   
@@ -33,12 +36,7 @@ const SearchBar = () => {
       setCount(count - 1);
     }
     console.log('prev ' + count)
-
-    fetch(`https://api.unsplash.com/search/photos/?client_id=${process.env.REACT_APP_CLIENTID}&page=${count}&per_page=10&query=${value}`)
-    .then(res => res.json())
-    .then((result) => {
-      setImages(result.results);
-    })
+    getData();
     event.preventDefault();
   }
 
@@ -46,10 +44,16 @@ const SearchBar = () => {
     setValue(event.target.value);
   }
 
+  const handleSubmit = event => {
+    setCount(1);
+    getData();
+    event.preventDefault();
+  }
+
 	return (
     <div>
       {console.log('return ' + count)}
-      <form>
+      <form onSubmit={handleSubmit}>
         <input type="text" value={value} onChange={handleChange} />
       </form>
       {images.map(image => (
