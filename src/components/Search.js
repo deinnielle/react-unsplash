@@ -1,18 +1,17 @@
 import React, { useState, useEffect } from 'react';
 
 const SearchBar = () => {
-  const startValue = 'random';
 	const [value, setValue] = useState('random');
   const [images, setImages] = useState([]);
   const [count, setCount] = useState(1);
   
   useEffect(() => {
-    fetch(`https://api.unsplash.com/search/photos/?client_id=${process.env.REACT_APP_CLIENTID}&page=${count}&per_page=10&query=${startValue}`)
+    fetch(`https://api.unsplash.com/search/photos/?client_id=${process.env.REACT_APP_CLIENTID}&page=${count}&per_page=10&query=random`)
     .then(res => res.json())
     .then((result) => {
       setImages(result.results);
     })
-  },[count, startValue]);
+  },[count]);
   
   const getData = () => {
     fetch(`https://api.unsplash.com/search/photos/?client_id=${process.env.REACT_APP_CLIENTID}&page=${count}&per_page=10&query=${value}`)
@@ -23,36 +22,40 @@ const SearchBar = () => {
   }
 
   const nextPage = event => {
-    setCount(count + 1);
-    console.log('prev ' + count)
     getData();
+    setCount(count + 1);
+    console.log('next ' + count + ' ' + value)
     event.preventDefault();
   }
   
   const prevPage = event => {
+    getData();
     if (count <= 1) {
       setCount(1);
     } else {
       setCount(count - 1);
     }
-    console.log('prev ' + count)
-    getData();
+    console.log('prev ' + count + ' ' + value)
     event.preventDefault();
   }
 
   const handleChange = event => {
     setValue(event.target.value);
+    if (count > 1) {
+      setCount(1);
+    }
   }
 
   const handleSubmit = event => {
-    setCount(1);
     getData();
     event.preventDefault();
   }
 
 	return (
     <div>
-      {console.log('return ' + count)}
+      {
+        console.log('return ' + count + ' ' + value)
+      }
       <form onSubmit={handleSubmit}>
         <input type="text" value={value} onChange={handleChange} />
       </form>
