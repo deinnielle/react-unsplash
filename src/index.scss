@@ -57,7 +57,7 @@ body {
 }
 
 input {
-	width: 100%;
+	width: 50%;
 	background-color: transparent;
 	border: 1px solid $textColor;
 	font-size: 20px;
@@ -72,6 +72,7 @@ input {
 }
 
 button {
+    width: 50%;
 	background-color: transparent;
 	border: 1px solid $textColor;
 	font-size: 20px;
@@ -81,7 +82,6 @@ button {
 	margin-left: 0px;
 	padding: 10px;
     color: $textColor;
-    width: 50%;
 }
 
 button:hover {

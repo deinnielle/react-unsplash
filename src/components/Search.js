@@ -18,9 +18,7 @@ const SearchBar = () => {
   }
 
   const nextPage = (event) => {
-  
-      setCount(count + 1);
-    
+    setCount(count + 1);
     getData();
     console.log('next ' + count + ' ' + value)
     event.preventDefault();
@@ -30,8 +28,7 @@ const SearchBar = () => {
     if (count > 1) {
       setCount(count - 1);
       getData();
-    } 
-    
+    }
     console.log('prev ' + count + ' ' + value)
     event.preventDefault();
   }
@@ -43,7 +40,6 @@ const SearchBar = () => {
 
   const handleSubmit = event => {
     getData();
-    
     event.preventDefault();
   }
 
@@ -52,6 +48,7 @@ const SearchBar = () => {
       {console.log('return ' + count)}
       <form onSubmit={handleSubmit}>
         <input type="text" value={value} onChange={handleChange} />
+        <button>SEND</button>
       </form>
       {images.map(image => (
         <div className="grid-item" key={image.id}>
