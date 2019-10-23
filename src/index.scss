@@ -1,5 +1,6 @@
 $backgroundColor: white;
 $textColor: black;
+$fontSize: 20px;
 
 html, body, div, span, applet, object, iframe,
 h1, h2, h3, h4, h5, h6, p, blockquote, pre,
@@ -52,6 +53,7 @@ table {
 body {
     background: $backgroundColor;
     font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+    font-size: $fontSize;
     color: $textColor;
     text-transform: uppercase;
 }
@@ -60,7 +62,7 @@ input {
 	width: 50%;
 	background-color: transparent;
 	border: 1px solid $textColor;
-	font-size: 20px;
+	font-size: $fontSize;
 	outline: none;
 	appearance: none;
 	border-radius: 0px;
@@ -75,7 +77,7 @@ button {
     width: 50%;
 	background-color: transparent;
 	border: 1px solid $textColor;
-	font-size: 20px;
+	font-size: $fontSize;
 	outline: none;
 	appearance: none;
 	border-radius: 0px;
@@ -103,6 +105,7 @@ nav {
         margin-right: 5px;
         text-decoration: none;
         color: $textColor;
+        font-size: $fontSize;
     }
     
     a:hover {
@@ -115,7 +118,7 @@ section {
 }
 
 .grid-item {
-    font-size: 20px;
+    font-size: $fontSize;
     width: 25%;
     display: inline-block;
     vertical-align:top;
