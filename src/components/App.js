@@ -10,7 +10,7 @@ const App = () => {
   },[count]);
   
   const getData = () => {
-    fetch(`https://api.unsplash.com/search/photos/?client_id=${process.env.REACT_APP_CLIENTID}&page=${count}&per_page=10&query=${value}`)
+    fetch(`https://api.unsplash.com/search/photos/?client_id=${process.env.REACT_APP_CLIENTID}&page=${count}&per_page=12&query=${value}`)
     .then(res => res.json())
     .then((result) => {
       setImages(result.results);
