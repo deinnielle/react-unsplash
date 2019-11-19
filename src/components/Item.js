@@ -12,24 +12,25 @@ const Item = ({match}) => {
   },[data]);
 
   const getData = async () => {
-    // https://api.unsplash.com/photos/4rDCa5hBlCs?client_id=30086014b47d3da23e1a9b2fa85837f0ca041c5ce34d4bfab637c45988c5ce08
-    const data = await fetch(`https://api.unsplash.com/photos/${match.params.id}?client_id=${process.env.REACT_APP_CLIENTID}`)
+    const data = await fetch(`https://api.unsplash.com/photos/${match.params.id}?client_id=30086014b47d3da23e1a9b2fa85837f0ca041c5ce34d4bfab637c45988c5ce08`)
     const result = await data.json();
     setData(result);
   }
 
   return (
     <div>
-      <img src={data.urls.regular} alt={data.description} />
+      <img src={data.urls.small} alt={data.description} />
       <div>
-        <p>{data.description}</p>
-        <p>{data.alt_description}</p>
-        <p>{data.user.name}</p>
-        <p>{data.exif.make}</p>
-        <p>{data.exif.model}</p>
-        <p>{data.exif.exposure_time}</p>
-        <p>{data.exif.focal_length}</p>
-        <p>{data.exif.iso}</p>
+        <ul>
+          <li>{data.description}</li>
+          <li>{data.alt_description}</li>
+          <li>{data.user.name}</li>
+          <li>{data.exif.make}</li>
+          <li>{data.exif.model}</li>
+          <li>{data.exif.exposure_time}</li>
+          <li>{data.exif.focal_length}</li>
+          <li>{data.exif.iso}</li>
+        </ul>
       </div>
     </div>
   )

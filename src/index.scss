@@ -10,52 +10,52 @@ small, strike, strong, sub, sup, tt, var,
 b, u, i, dl, dt, dd, ol, ul, li,
 fieldset, form, label, legend,
 table, caption, tbody, tfoot, thead, tr, th, td,
-article, aside, canvas, details, embed, 
-figure, figcaption, footer, header, hgroup, 
+article, aside, canvas, details, embed,
+figure, figcaption, footer, header, hgroup,
 menu, nav, output, section, summary,
 time, mark, audio, video {
-    margin: 0;
-    padding: 0;
-    border: 0;
-    font-size: 100%;
-    font: inherit;
-    vertical-align: baseline;
+  margin: 0;
+  padding: 0;
+  border: 0;
+  font-size: 100%;
+  font: inherit;
+  vertical-align: baseline;
 }
 
-article, aside, details, figcaption, figure, 
+article, aside, details, figcaption, figure,
 footer, header, hgroup, menu, nav, section {
-    display: block;
+  display: block;
 }
 
 ol, ul {
-    list-style: none;
+  list-style: none;
 }
 
 blockquote, q {
-    quotes: none;
+  quotes: none;
 }
 
 blockquote:before, blockquote:after,
 q:before, q:after {
-    content: '';
-    content: none;
+  content: '';
+  content: none;
 }
 
 table {
-    border-collapse: collapse;
-    border-spacing: 0;
+  border-collapse: collapse;
+  border-spacing: 0;
 }
 
 * {
-    box-sizing: border-box;
+  box-sizing: border-box;
 }
 
 body {
-    background: $backgroundColor;
-    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
-    font-size: $fontSize;
-    color: $textColor;
-    text-transform: uppercase;
+  background: $backgroundColor;
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-size: $fontSize;
+  color: $textColor;
+  text-transform: uppercase;
 }
 
 input {
@@ -87,61 +87,61 @@ button {
 }
 
 button:hover {
-    background: $textColor;
-    color: $backgroundColor;
+  background: $textColor;
+  color: $backgroundColor;
 }
 
 a {
-    text-decoration: none;
-    color: $textColor;
+  text-decoration: none;
+  color: $textColor;
 }
 
 a:hover {
-    text-decoration: underline;
+  text-decoration: underline;
 }
 
 nav {
     a {
-        margin-right: 5px;
-        text-decoration: none;
-        color: $textColor;
-        font-size: $fontSize;
+      margin-right: 5px;
+      text-decoration: none;
+      color: $textColor;
+      font-size: $fontSize;
     }
-    
+
     a:hover {
-        text-decoration: underline;
+      text-decoration: underline;
     }
 }
 
 section {
-    font-size: 0px;
+  font-size: 0px;
 }
 
 .grid-item {
-    font-size: $fontSize;
-    width: 25%;
-    display: inline-block;
-    vertical-align:top;
-    box-sizing: border-box;
-    white-space: nowrap;
-    
-    img {
-        width: 100%;
-    }
+  font-size: $fontSize;
+  width: 25%;
+  display: inline-block;
+  vertical-align:top;
+  box-sizing: border-box;
+  white-space: nowrap;
+
+  img {
+    width: 100%;
+  }
 }
 
 .text {
-    padding: 0px;
+  padding: 0px;
 }
 
-@media only screen and (max-width:1200px) { 
-    .grid-item {
-        width: 50%;
-    }
+@media only screen and (max-width:1200px) {
+  .grid-item {
+      width: 50%;
+  }
 }
 
-@media only screen and (max-width:500px) { 
-    .grid-item {
-        width: 100%;
-    }
+@media only screen and (max-width:500px) {
+  .grid-item {
+    width: 100%;
+  }
 }

@@ -1,17 +1,17 @@
-import React, { useState, useEffect } from 'react';
-import {Link} from 'react-router-dom';
+import React, { useState, useContext, useEffect } from 'react';
+import {AppContext} from './Context';
+import Items from './Items';
 
 const Search = () => {
-  const [value, setValue] = useState('random');
   const [images, setImages] = useState([]);
-  const [count, setCount] = useState(1);
+  const [count, setCount, value, setValue] = useContext(AppContext);
 
   useEffect(() => {
     getData();
   },[count]);
 
   const getData = async () => {
-    const data = await fetch(`https://api.unsplash.com/search/photos/?client_id=${process.env.REACT_APP_CLIENTID}&page=${count}&per_page=12&query=${value}`)
+    const data = await fetch(`https://api.unsplash.com/search/photos/?client_id=30086014b47d3da23e1a9b2fa85837f0ca041c5ce34d4bfab637c45988c5ce08&page=${count}&per_page=12&query=${value}`)
     const result = await data.json();
     setImages(result.results);
   }
@@ -46,20 +46,13 @@ const Search = () => {
         <input type="text" value={value} onChange={handleChange} />
         <button>SEND</button>
       </form>
-      {images.map(image => (
-        <Link to={`/p/${image.id}`} key={image.id}>
-        <div className="grid-item">
-          <img src={image.urls.regular} alt={image.description} />
-          <div className="text">{image.description}</div>
-        </div>
-        </Link>
-      ))}
+      <Items data={images} />
       <div>
         <button onClick={prevPage}>PREV</button>
-        <button onClick={nextPage}>MORE</button>
+        <button onClick={nextPage}>NEXT</button>
       </div>
     </div>
-  )
+  );
 }
 
 export default Search;
