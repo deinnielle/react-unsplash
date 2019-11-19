@@ -7,7 +7,7 @@ const Items = (props) => {
     {props.data.map(image => (
       <Link to={`/item/${image.id}`} key={image.id}>
         <div className="grid-item">
-          <img src={image.urls.regular} alt={image.description} />
+          <img src={image.urls.small} alt={image.description} />
           <div className="text">{image.description}</div>
         </div>
       </Link>
