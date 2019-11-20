@@ -11,9 +11,9 @@ const Search = () => {
   },[count]);
 
   const getData = async () => {
-    const data = await fetch(`https://api.unsplash.com/search/photos/?client_id=30086014b47d3da23e1a9b2fa85837f0ca041c5ce34d4bfab637c45988c5ce08&page=${count}&per_page=12&query=${value}`)
-    const result = await data.json();
-    setImages(result.results);
+    const data = await fetch(`https://api.unsplash.com/search/photos/?client_id=30086014b47d3da23e1a9b2fa85837f0ca041c5ce34d4bfab637c45988c5ce08&page=${count}&per_page=12&query=${value}`);
+    const response = await data.json();
+    setImages(response.results);
   }
 
   const nextPage = () => {
