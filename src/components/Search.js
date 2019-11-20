@@ -16,25 +16,23 @@ const Search = () => {
     setImages(result.results);
   }
 
-  const nextPage = (event) => {
+  const nextPage = () => {
     setCount(count + 1);
     getData();
-    event.preventDefault();
   }
 
-  const prevPage = event => {
+  const prevPage = () => {
     if (count > 1) {
       setCount(count - 1);
       getData();
     }
-    event.preventDefault();
   }
 
-  const handleChange = event => {
+  const handleChange = (event) => {
     setValue(event.target.value);
   }
 
-  const handleSubmit = event => {
+  const handleSubmit = (event) => {
     setCount(1);
     getData();
     event.preventDefault();
