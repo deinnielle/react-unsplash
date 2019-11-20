@@ -32,10 +32,10 @@ const Search = () => {
 
   const handleChange = event => {
     setValue(event.target.value);
-    setCount(1);
   }
 
   const handleSubmit = event => {
+    setCount(1);
     getData();
     event.preventDefault();
   }
