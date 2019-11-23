@@ -4,7 +4,7 @@ export const AppContext = createContext();
 
 export const AppProvider = (props) => {
   const [count, setCount] = useState(1);
-  const [value, setValue] = useState('random');
+  const [value, setValue] = useState('');
 
   return(
     <AppContext.Provider value={[count, setCount, value, setValue]}>

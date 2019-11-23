@@ -7,13 +7,23 @@ const Search = () => {
   const [count, setCount, value, setValue] = useContext(AppContext);
 
   useEffect(() => {
-    getData();
+    if (value === '') {
+      getInitialData();
+    } else {
+      getData();
+    }
   },[count]);
 
+  const getInitialData = async () => {
+    const data = await fetch(`https://api.unsplash.com/photos/random?client_id=30086014b47d3da23e1a9b2fa85837f0ca041c5ce34d4bfab637c45988c5ce08&count=15`)
+    const response = await data.json();
+    setImages(response);
+  }
+
   const getData = async () => {
-    const data = await fetch(`https://api.unsplash.com/search/photos/?client_id=30086014b47d3da23e1a9b2fa85837f0ca041c5ce34d4bfab637c45988c5ce08&page=${count}&per_page=12&query=${value}`)
-    const result = await data.json();
-    setImages(result.results);
+    const data = await fetch(`https://api.unsplash.com/search/photos/?client_id=30086014b47d3da23e1a9b2fa85837f0ca041c5ce34d4bfab637c45988c5ce08&page=${count}&per_page=12&query=${value}`);
+    const response = await data.json();
+    setImages(response.results);
   }
 
   const nextPage = () => {
@@ -30,6 +40,8 @@ const Search = () => {
 
   const handleChange = (event) => {
     setValue(event.target.value);
+    console.log(event.target.value);
+
   }
 
   const handleSubmit = (event) => {
@@ -38,19 +50,32 @@ const Search = () => {
     event.preventDefault();
   }
 
-  return (
-    <div>
-      <form onSubmit={handleSubmit}>
-        <input type="text" value={value} onChange={handleChange} />
-        <button>SEND</button>
-      </form>
-      <Items data={images} />
+  if (value === '') {
+    return (
       <div>
-        <button onClick={prevPage}>PREV</button>
-        <button onClick={nextPage}>NEXT</button>
+        {console.log(value)}
+        <form onSubmit={handleSubmit}>
+          <input type="text" value={value} onChange={handleChange} required/>
+          <button>SEND</button>
+        </form>
+        <Items data={images} />
       </div>
-    </div>
-  );
+    );
+  } else {
+    return (
+      <div>
+        <form onSubmit={handleSubmit}>
+          <input type="text" value={value} onChange={handleChange} />
+          <button>SEND</button>
+        </form>
+        <Items data={images} />
+        <div>
+          <button onClick={prevPage}>PREV</button>
+          <button onClick={nextPage}>NEXT</button>
+        </div>
+      </div>
+    );
+  }
 }
 
 export default Search;
