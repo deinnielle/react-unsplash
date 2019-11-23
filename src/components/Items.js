@@ -3,8 +3,6 @@ import {Link} from 'react-router-dom';
 import {AppContext} from './Context';
 
 const Items = (props) => {
-  const [count, setCount, value, setValue] = useContext(AppContext);
-
   return (
     <div>
     {props.data.map(image => (

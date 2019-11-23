@@ -15,13 +15,13 @@ const Search = () => {
   },[count]);
 
   const getInitialData = async () => {
-    const data = await fetch(`https://api.unsplash.com/photos/random?client_id=30086014b47d3da23e1a9b2fa85837f0ca041c5ce34d4bfab637c45988c5ce08&count=15`)
+    const data = await fetch(`https://api.unsplash.com/photos/random?client_id=${process.env.REACT_APP_CLIENTID}&count=15`)
     const response = await data.json();
     setImages(response);
   }
 
   const getData = async () => {
-    const data = await fetch(`https://api.unsplash.com/search/photos/?client_id=30086014b47d3da23e1a9b2fa85837f0ca041c5ce34d4bfab637c45988c5ce08&page=${count}&per_page=12&query=${value}`);
+    const data = await fetch(`https://api.unsplash.com/search/photos/?client_id=${process.env.REACT_APP_CLIENTID}&page=${count}&per_page=12&query=${value}`);
     const response = await data.json();
     setImages(response.results);
   }
@@ -41,7 +41,6 @@ const Search = () => {
   const handleChange = (event) => {
     setValue(event.target.value);
     console.log(event.target.value);
-
   }
 
   const handleSubmit = (event) => {
@@ -50,32 +49,46 @@ const Search = () => {
     event.preventDefault();
   }
 
-  if (value === '') {
-    return (
+  return (
+    <div>
+      <form onSubmit={handleSubmit}>
+        <input type="text" value={value} onChange={handleChange} required/>
+        <button>SEND</button>
+      </form>
+      <Items data={images} />
       <div>
-        {console.log(value)}
-        <form onSubmit={handleSubmit}>
-          <input type="text" value={value} onChange={handleChange} required/>
-          <button>SEND</button>
-        </form>
-        <Items data={images} />
+      <button onClick={prevPage}>PREV</button>
+        <button onClick={nextPage}>NEXT</button>
       </div>
-    );
-  } else {
-    return (
-      <div>
-        <form onSubmit={handleSubmit}>
-          <input type="text" value={value} onChange={handleChange} />
-          <button>SEND</button>
-        </form>
-        <Items data={images} />
-        <div>
-          <button onClick={prevPage}>PREV</button>
-          <button onClick={nextPage}>NEXT</button>
-        </div>
-      </div>
-    );
-  }
+    </div>
+  );
+
+  // if (value === '') {
+  //   return (
+  //     <div>
+  //       {console.log(value)}
+  //       <form onSubmit={handleSubmit}>
+  //         <input type="text" value={value} onChange={handleChange} required/>
+  //         <button>SEND</button>
+  //       </form>
+  //       <Items data={images} />
+  //     </div>
+  //   );
+  // } else {
+  //   return (
+  //     <div>
+  //       <form onSubmit={handleSubmit}>
+  //         <input type="text" value={value} onChange={handleChange} />
+  //         <button>SEND</button>
+  //       </form>
+  //       <Items data={images} />
+  //       <div>
+  //         <button onClick={prevPage}>PREV</button>
+  //         <button onClick={nextPage}>NEXT</button>
+  //       </div>
+  //     </div>
+  //   );
+  // }
 }
 
 export default Search;

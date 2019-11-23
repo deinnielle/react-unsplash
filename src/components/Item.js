@@ -12,7 +12,7 @@ const Item = ({match}) => {
   },[data]);
 
   const getData = async () => {
-    const data = await fetch(`https://api.unsplash.com/photos/${match.params.id}?client_id=30086014b47d3da23e1a9b2fa85837f0ca041c5ce34d4bfab637c45988c5ce08`);
+    const data = await fetch(`https://api.unsplash.com/photos/${match.params.id}?client_id=${process.env.REACT_APP_CLIENTID}`);
     const response = await data.json();
     setData(response);
   }
