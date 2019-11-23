@@ -55,7 +55,7 @@ const Search = () => {
     return (
       <div>
         <form onSubmit={handleSubmit}>
-          <input type="text" value={value} onChange={handleChange} required/>
+          <input type="text" value={value} onChange={handleChange} />
           <button>SEND</button>
         </form>
         <Items data={images} />
@@ -69,41 +69,13 @@ const Search = () => {
     return (
       <div>
         <form onSubmit={handleSubmit}>
-          <input type="text" value={value} onChange={handleChange} required/>
+          <input type="text" value={value} onChange={handleChange} placeholder="search" required />
           <button>SEND</button>
         </form>
         <Items data={images} />
       </div>
     );
   }
-
-
-  // if (value === '') {
-  //   return (
-  //     <div>
-  //       {console.log(value)}
-  //       <form onSubmit={handleSubmit}>
-  //         <input type="text" value={value} onChange={handleChange} required/>
-  //         <button>SEND</button>
-  //       </form>
-  //       <Items data={images} />
-  //     </div>
-  //   );
-  // } else {
-  //   return (
-  //     <div>
-  //       <form onSubmit={handleSubmit}>
-  //         <input type="text" value={value} onChange={handleChange} />
-  //         <button>SEND</button>
-  //       </form>
-  //       <Items data={images} />
-  //       <div>
-  //         <button onClick={prevPage}>PREV</button>
-  //         <button onClick={nextPage}>NEXT</button>
-  //       </div>
-  //     </div>
-  //   );
-  // }
 }
 
 export default Search;
