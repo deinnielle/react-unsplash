@@ -6,11 +6,12 @@ const Search = () => {
   const [images, setImages] = useState([]);
   const [count, setCount, value, setValue] = useContext(AppContext);
 
+
   useEffect(() => {
-    if (value === '') {
-      getInitialData();
-    } else {
+    if (value) {
       getData();
+    } else {
+      getInitialData();
     }
   },[count]);
 
@@ -40,28 +41,42 @@ const Search = () => {
 
   const handleChange = (event) => {
     setValue(event.target.value);
-    console.log(event.target.value);
   }
 
   const handleSubmit = (event) => {
-    setCount(1);
-    getData();
+    if (value) {
+      setCount(1);
+      getData();
+    }
     event.preventDefault();
   }
 
-  return (
-    <div>
-      <form onSubmit={handleSubmit}>
-        <input type="text" value={value} onChange={handleChange} required/>
-        <button>SEND</button>
-      </form>
-      <Items data={images} />
+  if (value) {
+    return (
       <div>
-      <button onClick={prevPage}>PREV</button>
-        <button onClick={nextPage}>NEXT</button>
+        <form onSubmit={handleSubmit}>
+          <input type="text" value={value} onChange={handleChange} required/>
+          <button>SEND</button>
+        </form>
+        <Items data={images} />
+        <div>
+          <button onClick={prevPage}>PREV</button>
+          <button onClick={nextPage}>NEXT</button>
+        </div>
       </div>
-    </div>
-  );
+    );
+  } else {
+    return (
+      <div>
+        <form onSubmit={handleSubmit}>
+          <input type="text" value={value} onChange={handleChange} required/>
+          <button>SEND</button>
+        </form>
+        <Items data={images} />
+      </div>
+    );
+  }
+
 
   // if (value === '') {
   //   return (
