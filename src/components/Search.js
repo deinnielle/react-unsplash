@@ -15,17 +15,13 @@ const Search = () => {
   }, [count]);
 
   const getInitialData = async () => {
-    const data = await fetch(
-      `https://api.unsplash.com/photos/random?client_id=${process.env.REACT_APP_CLIENTID}&count=15`
-    );
+    const data = await fetch(`https://api.unsplash.com/photos/random?client_id=${process.env.REACT_APP_CLIENTID}&count=15`);
     const response = await data.json();
     setImages(response);
   };
 
   const getData = async () => {
-    const data = await fetch(
-      `https://api.unsplash.com/search/photos/?client_id=${process.env.REACT_APP_CLIENTID}&page=${count}&per_page=12&query=${value}`
-    );
+    const data = await fetch(`https://api.unsplash.com/search/photos/?client_id=${process.env.REACT_APP_CLIENTID}&page=${count}&per_page=12&query=${value}`);
     const response = await data.json();
     setImages(response.results);
   };
@@ -72,13 +68,7 @@ const Search = () => {
     return (
       <div>
         <form onSubmit={handleSubmit}>
-          <input
-            type="text"
-            value={value}
-            onChange={handleChange}
-            placeholder="search"
-            required
-          />
+          <input type="text" value={value} onChange={handleChange} placeholder="search" required />
           <button>SEND</button>
         </form>
         <Items data={images} />
