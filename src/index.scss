@@ -1,99 +1,75 @@
 $backgroundColor: white;
-$textColor: black;
+$fontColor: black;
 $fontSize: 20px;
-
-html, body, div, span, applet, object, iframe,
-h1, h2, h3, h4, h5, h6, p, blockquote, pre,
-a, abbr, acronym, address, big, cite, code,
-del, dfn, em, img, ins, kbd, q, s, samp,
-small, strike, strong, sub, sup, tt, var,
-b, u, i, dl, dt, dd, ol, ul, li,
-fieldset, form, label, legend,
-table, caption, tbody, tfoot, thead, tr, th, td,
-article, aside, canvas, details, embed,
-figure, figcaption, footer, header, hgroup,
-menu, nav, output, section, summary,
-time, mark, audio, video {
-  margin: 0;
-  padding: 0;
-  border: 0;
-  font-size: 100%;
-  font: inherit;
-  vertical-align: baseline;
-}
-
-article, aside, details, figcaption, figure,
-footer, header, hgroup, menu, nav, section {
-  display: block;
-}
-
-ol, ul {
-  list-style: none;
-}
-
-blockquote, q {
-  quotes: none;
-}
-
-blockquote:before, blockquote:after,
-q:before, q:after {
-  content: '';
-  content: none;
-}
-
-table {
-  border-collapse: collapse;
-  border-spacing: 0;
-}
 
 * {
   box-sizing: border-box;
+  padding: 0;
+  margin: 0;
 }
 
 body {
   background: $backgroundColor;
   font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
   font-size: $fontSize;
-  color: $textColor;
+  color: $fontColor;
   text-transform: uppercase;
 }
 
+// input {
+//   width: 50%;
+//   font-size: 100%;
+//   font-family: inherit;
+//   background-color: transparent;
+//   border: 1px solid $fontColor;
+//   outline: none;
+//   appearance: none;
+//   border-radius: 0px;
+//   margin-left: 0px;
+//   padding: 10px 10px 10px 5px;
+//   color: $fontColor;
+//   text-transform: uppercase;
+//   background-clip: padding-box;
+// }
+
 input {
-	width: 50%;
-	background-color: transparent;
-	border: 1px solid $textColor;
-	font-size: $fontSize;
-	outline: none;
-	appearance: none;
-	border-radius: 0px;
-	margin-left: 0px;
-	padding: 10px 10px 10px 5px;
-	color: $textColor;
-	text-transform: uppercase;
-	background-clip: padding-box;
+  width: 50%;
+  font-size: 100%;
+  font-family: inherit;
+  text-transform: uppercase;
+  color: $fontColor;
+  background: none;
+  border: 1px solid $fontColor;
+  outline: none;
+  padding: 5px;
+}
+
+::placeholder {
+  color: $fontColor;
 }
 
 button {
-    width: 50%;
-	background-color: transparent;
-	border: 1px solid $textColor;
-	font-size: $fontSize;
-	outline: none;
-	appearance: none;
-	border-radius: 0px;
-	margin-left: 0px;
-	padding: 10px;
-    color: $textColor;
+  width: 50%;
+  font-size: 100%;
+  font-family: inherit;
+  background-color: transparent;
+  border: 1px solid $fontColor;
+  outline: none;
+  appearance: none;
+  border-radius: 0px;
+  margin-left: 0px;
+  padding: 5px;
+  color: $fontColor;
 }
 
 button:hover {
-  background: $textColor;
+  background: $fontColor;
   color: $backgroundColor;
 }
 
 a {
   text-decoration: none;
-  color: $textColor;
+  color: $fontColor;
 }
 
 a:hover {
@@ -101,16 +77,16 @@ a:hover {
 }
 
 nav {
-    a {
-      margin-right: 5px;
-      text-decoration: none;
-      color: $textColor;
-      font-size: $fontSize;
-    }
+  a {
+    padding: 0 0 0 5px;
+    text-decoration: none;
+    color: $fontColor;
+    font-size: $fontSize;
+  }
 
-    a:hover {
-      text-decoration: underline;
-    }
+  a:hover {
+    text-decoration: underline;
+  }
 }
 
 section {
@@ -121,7 +97,7 @@ section {
   font-size: $fontSize;
   width: 25%;
   display: inline-block;
-  vertical-align:top;
+  vertical-align: top;
   box-sizing: border-box;
   white-space: nowrap;
 
@@ -130,17 +106,18 @@ section {
   }
 }
 
-.text {
-  padding: 0px;
+p,
+ul {
+  padding: 0 0 0 5px;
 }
 
-@media only screen and (max-width:1200px) {
+@media only screen and (max-width: 1200px) {
   .grid-item {
-      width: 50%;
+    width: 50%;
   }
 }
 
-@media only screen and (max-width:500px) {
+@media only screen and (max-width: 500px) {
   .grid-item {
     width: 100%;
   }

@@ -8,7 +8,7 @@ const Items = props => {
         <Link to={`/item/${image.id}`} key={image.id}>
           <div className="grid-item">
             <img src={image.urls.small} alt={image.description} />
-            <div className="text">{image.description}</div>
+            <p className="text">{image.description}</p>
           </div>
         </Link>
       ))}
