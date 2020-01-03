@@ -4,7 +4,6 @@ import { Link } from "react-router-dom";
 const Items = props => {
   return (
     <div>
-      {console.log(props.data[2])}
       {props.data.map(image => (
         <Link to={`/item/${image.id}`} key={image.id}>
           <div className="grid-item">
